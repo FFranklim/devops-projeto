@@ -1,0 +1,19 @@
+name: Alerta no Discord
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+jobs:
+  alerta:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar alerta para o Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d '{"content": "🚨 Novo push ou merge na branch main do projeto DevOps!"}' \
+          https://discord.com/api/webhooks/1418010947414393053/EF0WyL5USLA5sFcKpL4nJXsRpGQGfRTKfuZksrmJVmiiYs7PPDW6U63uzHrkh8carMHQ
